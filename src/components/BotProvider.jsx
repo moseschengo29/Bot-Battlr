@@ -7,6 +7,7 @@ function BotProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [sortedBots, setSortedBots] = useState([]);
   const [botArmy, seBotArmy] = useState([]);
+  const [query, setQuery] = useState("");
 
   function handleSort(sortBy) {
     if (sortBy === "health") {
@@ -39,10 +40,18 @@ function BotProvider({ children }) {
   }
 
   useEffect(() => {
+    const filteredBots = sortedBots.filter((bot) =>
+      bot.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setSortedBots(filteredBots);
+  }, [query]);
+
+  useEffect(() => {
     async function fetchBots() {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:3000/bots");
+        const res = await fetch("http://localhost:8000/bots");
         const data = await res.json();
         setBots(data);
         setSortedBots(data);
@@ -64,6 +73,8 @@ function BotProvider({ children }) {
         handleSort,
         botArmy,
         removeBotFromArmy,
+        query,
+        setQuery,
       }}
     >
       {children}

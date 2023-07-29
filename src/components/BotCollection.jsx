@@ -7,6 +7,8 @@ function BotCollection() {
 
   if (isLoading) return <Spinner />;
 
+  if (bots.length === 0) return <h1>No Bots Related to your search!</h1>;
+
   return (
     <ul className="bot-collection">
       {bots.map((bot) => (
