@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useBots } from "./BotProvider";
 
 function Bot({ bot }) {
-  const { addBotToArmy } = useBots();
   const {
     id,
     name,
@@ -25,7 +24,7 @@ function Bot({ bot }) {
   if (bot_class === "Captain") icon = <i class="fa-solid fa-robot"></i>;
 
   return (
-    <Link to={`bot/${id}`} className="bot" onClick={(e) => addBotToArmy(bot)}>
+    <Link to={`bot/${id}`} className="bot">
       <img src={avatar_url} alt="" className="bot-img" />
 
       <div className="bot-body">

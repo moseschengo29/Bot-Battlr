@@ -2,8 +2,8 @@
 
 :root {
   --bgColor: #fffffa;
-  --primary-color: #a31621;
-  --secondary-color: #003b36;
+  --primary-color: #b91522;
+  --secondary-color: #08615a;
   --text-color: #333533;
   --text-dark: #000;
   --text-darkest: #242423;
@@ -70,7 +70,7 @@ a:-webkit-any-link {
 .header {
   width: 100%;
   height: 70vh;
-  background-image: url(../assests/banner.png);
+  background-image: url(./assests//banner.png);
   background-size: contain;
   position: relative;
   z-index: 1;
@@ -228,4 +228,83 @@ a:-webkit-any-link {
 
 .tag {
   color: var(--primary-color);
+}
+
+.bot-card-title {
+  text-align: center;
+  font-size: 4rem;
+  padding: 2rem;
+}
+
+.bot-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  padding: 4rem;
+  font-size: 1.8rem;
+}
+
+.bot-card-image {
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.bot-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bot-card-attributes {
+  display: flex;
+  gap: 30px;
+
+  padding: 0.7rem;
+
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.bot-card-attributes img {
+  height: 30px;
+}
+
+.bot-card-attribute {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  border-radius: 5px;
+}
+
+.back {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.back:hover {
+  background-color: #fffffa;
+  color: var(--text-color);
+  border: 2px solid var(--primary-color);
+}
+
+.add {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+}
+
+.add:hover {
+  background-color: #003b36;
 }

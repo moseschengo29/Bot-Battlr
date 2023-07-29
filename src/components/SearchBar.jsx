@@ -7,7 +7,10 @@ function SearchBar() {
     <form>
       <input
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {
+          e.preventDefault();
+          setQuery(e.target.value);
+        }}
         type="text"
         className="search"
         placeholder="Search for a bot..."
