@@ -16,7 +16,11 @@ function SelectedBot({ bot }) {
   if (bot_class === "Captain") icon = <i class="fa-solid fa-robot"></i>;
 
   return (
-    <li className="selected-bot" onClick={() => removeBotFromArmy(bot)}>
+    <li className="selected-bot">
+      <i
+        class="fa-solid fa-trash delete"
+        onClick={() => removeBotFromArmy(bot)}
+      ></i>
       <img src={avatar_url} alt="" className="selected-bot-img" />
 
       <div className="selected-bot-body">

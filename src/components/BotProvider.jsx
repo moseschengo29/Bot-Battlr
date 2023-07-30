@@ -6,8 +6,11 @@ function BotProvider({ children }) {
   const [bots, setBots] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortedBots, setSortedBots] = useState([]);
+  const [allBots, setAllBots] = useState([]);
   const [botArmy, seBotArmy] = useState([]);
   const [query, setQuery] = useState("");
+  const [filteredBots, setFilteredBots] = useState([]);
+  const [filterMethod, setFilterMethod] = useState("");
 
   function handleSort(sortBy) {
     if (sortBy === "health") {
@@ -39,13 +42,48 @@ function BotProvider({ children }) {
     seBotArmy((bots) => bots.filter((b) => b.id !== bot.id));
   }
 
-  useEffect(() => {
-    const filteredBots = sortedBots.filter((bot) =>
-      bot.name.toLowerCase().includes(query.toLowerCase())
+  function removeBotFromCollection(bot) {
+    setSortedBots((bots) => bots.filter((b) => b.id !== bot.id));
+  }
+
+  function deleteBot(bot) {
+    const confirm = window.confirm(
+      "Are you sure you want to delete a bot permanently?"
     );
 
-    setSortedBots(filteredBots);
-  }, [query]);
+    if (confirm) {
+      fetch(`http://localhost:8000/bots/${bot.id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then(() => removeBotFromCollection(bot));
+    }
+  }
+
+  function filterBots(botClass) {
+    setFilterMethod(botClass);
+  }
+
+  useEffect(() => {
+    let bots;
+    if (filterMethod === "") {
+      bots = allBots;
+    } else {
+      bots = allBots.filter((bot) => bot.bot_class === filterMethod);
+    }
+    setFilteredBots(bots);
+  }, [filterMethod, sortedBots]);
+
+  useEffect(() => {
+    let filteredBots = [...sortedBots]; // Make a copy of the sortedBots array
+
+    if (query !== "") {
+      filteredBots = filteredBots.filter((bot) =>
+        bot.name.toLowerCase().includes(query.toLowerCase())
+      );
+    } else filteredBots = [...bots];
+    setFilteredBots(filteredBots);
+  }, [query, sortedBots]);
 
   useEffect(() => {
     async function fetchBots() {
@@ -55,6 +93,7 @@ function BotProvider({ children }) {
         const data = await res.json();
         setBots(data);
         setSortedBots(data);
+        setAllBots(data);
       } catch (err) {
         alert("Error fetching bots");
       } finally {
@@ -67,14 +106,17 @@ function BotProvider({ children }) {
   return (
     <BotContext.Provider
       value={{
-        bots: sortedBots,
+        bots: filteredBots,
         isLoading,
+        deleteBot,
         addBotToArmy,
         handleSort,
         botArmy,
         removeBotFromArmy,
         query,
         setQuery,
+        filterBots,
+        setFilterMethod,
       }}
     >
       {children}

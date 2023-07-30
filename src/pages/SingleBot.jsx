@@ -5,6 +5,22 @@ import { useBots } from "../components/BotProvider";
 import health from "../assests/001-cardiogram.png";
 import shield from "../assests/002-shield.png";
 import damage from "../assests/003-damage.png";
+function formatDateTime(dateTimeString) {
+  const dateObj = new Date(dateTimeString);
+
+  const optionsDate = { month: "long", day: "numeric", year: "numeric" };
+  const formattedDate = dateObj.toLocaleDateString("en-US", optionsDate);
+
+  const optionsTime = {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
+  };
+  const formattedTime = dateObj.toLocaleTimeString("en-US", optionsTime);
+
+  return `${formattedDate} ${formattedTime}`;
+}
 
 function SingleBot() {
   const { id } = useParams();
@@ -20,7 +36,8 @@ function SingleBot() {
       console.log(data);
     }
     fetchBot();
-  }, []);
+  }, [id]);
+
   return (
     <>
       <h1 className="bot-card-title">Bot Details</h1>
@@ -33,11 +50,12 @@ function SingleBot() {
         <div className="bot-details">
           <h1>Name: {selectedBot.name}</h1>
           <p>
-            <strong>Catchphrase:</strong> {selectedBot.catchphrase}
+            <strong>Catchphrase:</strong>{" "}
+            <span className="catchphrase">{selectedBot.catchphrase}</span>
           </p>
           <p>
-            <strong>Bot Class: </strong>
-            {selectedBot.bot_class}
+            <strong>Bot Class: </strong>{" "}
+            <span className="bot-class">{selectedBot.bot_class}</span>
           </p>
 
           <div>
@@ -57,8 +75,8 @@ function SingleBot() {
             </ul>
           </div>
 
-          <p>Created at: {selectedBot.created_at}</p>
-          <p>Updated at: {selectedBot.updated_at}</p>
+          <p>Created on: {formatDateTime(selectedBot.created_at)}</p>
+          <p>Updated on: {formatDateTime(selectedBot.updated_at)}</p>
 
           <div className="buttons">
             <Link to="/">

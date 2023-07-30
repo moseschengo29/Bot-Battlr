@@ -1,4 +1,5 @@
 import { useBots } from "./BotProvider";
+import SortBar from "./SortBar";
 
 function Sort() {
   const { handleSort, bots } = useBots();
@@ -11,6 +12,8 @@ function Sort() {
           <option value="damage">Sort by Damage</option>
         </select>
       </form>
+
+      <SortBar />
 
       <p className="results">
         Showing <strong>{bots.length}</strong> results

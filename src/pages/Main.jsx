@@ -1,10 +1,10 @@
 import BotCollection from "../components/BotCollection";
-import Sort from "../components/Sort";
+import SortInput from "../components/SortInput";
 
 function Main() {
   return (
     <section>
-      <Sort />
+      <SortInput />
       <BotCollection />
     </section>
   );

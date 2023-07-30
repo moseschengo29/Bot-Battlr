@@ -94,6 +94,33 @@ a:-webkit-any-link {
   padding: 1rem 2rem;
 }
 
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.sort-btn {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  background-color: #fffffa;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid black;
+}
+
+.sort-btn:hover {
+  background-color: #f3f3f3;
+}
+
 .details {
   display: flex;
   justify-content: space-between;
@@ -126,7 +153,7 @@ a:-webkit-any-link {
   gap: 40px;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 4rem;
 }
 
 .bot {
@@ -137,12 +164,31 @@ a:-webkit-any-link {
   transition: all 0.3s ease;
   text-decoration: none;
   color: var(--text-color);
+  position: relative;
 }
 
 .bot:hover {
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: none;
+}
+
+.delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  padding: 0.5rem;
+  color: #ffffff;
+  background-color: rgb(197, 196, 196);
+  border-radius: 50%;
+  width: 25px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: #b91522;
 }
 
 .bot-img {
@@ -199,6 +245,7 @@ a:-webkit-any-link {
   border: 1px solid #ebeaea;
   background-color: #fffffa;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .selected-bot:hover {
@@ -307,4 +354,16 @@ a:-webkit-any-link {
 
 .add:hover {
   background-color: #003b36;
+}
+
+.catchphrase {
+  color: #1f487e;
+}
+
+.bot-class {
+  padding: 0.3rem;
+  background-color: #f7b32b;
+  color: black;
+  font-size: 1.4rem;
+  border-radius: 5px;
 }
