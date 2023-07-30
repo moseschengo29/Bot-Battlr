@@ -7,7 +7,7 @@ function BotProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [sortedBots, setSortedBots] = useState([]);
   const [allBots, setAllBots] = useState([]);
-  const [botArmy, seBotArmy] = useState([]);
+  const [botArmy, setBotArmy] = useState([]);
   const [query, setQuery] = useState("");
   const [filteredBots, setFilteredBots] = useState([]);
   const [filterMethod, setFilterMethod] = useState("");
@@ -35,15 +35,15 @@ function BotProvider({ children }) {
 
   function addBotToArmy(bot) {
     if (botArmy.length !== 4 && !botArmy.includes(bot))
-      seBotArmy((bots) => [bot, ...bots]);
+      setBotArmy((bots) => [bot, ...bots]);
   }
 
   function removeBotFromArmy(bot) {
-    seBotArmy((bots) => bots.filter((b) => b.id !== bot.id));
+    setBotArmy((bots) => bots.filter((b) => b.id !== bot.id));
   }
 
   function removeBotFromCollection(bot) {
-    setSortedBots((bots) => bots.filter((b) => b.id !== bot.id));
+    setFilteredBots((bots) => bots.filter((b) => b.id !== bot.id));
   }
 
   function deleteBot(bot) {
