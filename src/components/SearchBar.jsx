@@ -4,7 +4,7 @@ function SearchBar() {
   const { query, setQuery } = useBots();
 
   return (
-    <form>
+    <form className="search">
       <input
         value={query}
         onChange={(e) => {
@@ -12,9 +12,9 @@ function SearchBar() {
           setQuery(e.target.value);
         }}
         type="text"
-        className="search"
         placeholder="Search for a bot..."
       />
+      <i class="fa-solid fa-magnifying-glass"></i>
     </form>
   );
 }

@@ -24,6 +24,7 @@ function formatDateTime(dateTimeString) {
 
 function SingleBot() {
   const { id } = useParams();
+
   const [selectedBot, setSelectedBot] = useState({});
 
   const { addBotToArmy } = useBots();
@@ -33,7 +34,6 @@ function SingleBot() {
       const res = await fetch(`http://localhost:8000/bots/${id}`);
       const data = await res.json();
       setSelectedBot(data);
-      console.log(data);
     }
     fetchBot();
   }, [id]);

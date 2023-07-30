@@ -14,22 +14,22 @@ function BotProvider({ children }) {
 
   function handleSort(sortBy) {
     if (sortBy === "health") {
-      const sortedByDescription = [...sortedBots].sort(
+      const sortedByDescription = [...allBots].sort(
         (a, b) => b.health - a.health
       );
-      setSortedBots(sortedByDescription);
+      setFilteredBots(sortedByDescription);
     }
     if (sortBy === "armor") {
-      const sortedByDescription = [...sortedBots].sort(
+      const sortedByDescription = [...allBots].sort(
         (a, b) => b.armor - a.armor
       );
-      setSortedBots(sortedByDescription);
+      setFilteredBots(sortedByDescription);
     }
     if (sortBy === "damage") {
-      const sortedByDescription = [...sortedBots].sort(
+      const sortedByDescription = [...allBots].sort(
         (a, b) => b.damage - a.damage
       );
-      setSortedBots(sortedByDescription);
+      setFilteredBots(sortedByDescription);
     }
   }
 
@@ -116,7 +116,6 @@ function BotProvider({ children }) {
         query,
         setQuery,
         filterBots,
-        setFilterMethod,
       }}
     >
       {children}

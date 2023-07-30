@@ -23,7 +23,7 @@ function Bot({ bot }) {
   if (bot_class === "Assault") icon = <i class="fa-solid fa-jet-fighter"></i>;
   if (bot_class === "Witch")
     icon = <i class="fa-solid fa-wand-magic-sparkles"></i>;
-  if (bot_class === "Captain") icon = <i class="fa-solid fa-robot"></i>;
+  if (bot_class === "Captain") icon = <i class="fa-solid fa-user-nurse"></i>;
 
   return (
     <div className="bot">
